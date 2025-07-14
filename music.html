@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everett Orange – Music Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #d6f3ff, #ffffff);
+      color: #1C1A30;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background-color: #e0f7ff;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #00aaff;
+    }
+
+    .logo {
+      font-size: 40px;
+      font-weight: bold;
+      color: #00aaff;
+    }
+
+    .logo span {
+      color: #f75990;
+    }
+
+    nav a {
+      margin-left: 30px;
+      text-decoration: none;
+      color: #1C1A30;
+      font-weight: 500;
+      font-size: 18px;
+      padding: 8px 12px;
+    }
+
+    nav a:hover {
+      color: #f75990;
+      text-shadow: 0 0 6px #f75990;
+    }
+
+    h1 {
+      margin: 40px 0 10px;
+      font-size: 36px;
+      color: #00aaff;
+      text-align: center;
+    }
+
+    .music-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .music-box {
+      background-size: cover;
+      background-position: center;
+      border-radius: 12px;
+      border: 2px solid #49d5ff;
+      padding: 20px;
+      transition: 0.3s ease;
+      box-shadow: 0 0 0 transparent;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      backdrop-filter: none;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .music-box:hover {
+      border-color: #f75990;
+      box-shadow: 0 0 25px #f75990;
+    }
+
+    audio {
+      width: 100%;
+      margin-bottom: 10px;
+      z-index: 1;
+    }
+
+    .music-caption {
+      font-size: 16px;
+      text-align: center;
+      color: #fff;
+      background: rgba(28, 26, 48, 0.8);
+      padding: 8px;
+      border-radius: 8px;
+      text-shadow: 0 0 4px #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #f2fcff;
+      color: #666;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+.music-box.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  border: none;
+  box-shadow: none;
+  padding: 60px;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s ease;
+}
+
+.music-box.fullscreen audio,
+.music-box.fullscreen .music-caption {
+  max-width: 600px;
+  margin: auto;
+  z-index: 10000;
+}
+
+.music-box.fullscreen audio {
+  display: none;
+}
+
+
+  </style>
+</head>
+<body>
+  <audio id="hover-sound" src="sounds/click.mp3" preload="auto"></audio>
+
+  <header>
+    <div class="logo">EVERETT <span>ORANGE</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <h1>Music Prompt engineering using Suno AI Software</h1>
+
+  <div class="music-grid">
+    <div class="music-box" style="background-image: url('music/skel.png');">
+      <audio controls src="music/Graveyard Fighter.mp3"></audio>
+      <div class="music-caption"> Graveyard Fighter</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/mag.png');">
+      <audio controls src="music/Moonlit Magic.mp3"></audio>
+      <div class="music-caption"> Moonlit Magic</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/cupid.png');">
+      <audio controls src="music/Fly With Wings On.mp3"></audio>
+      <div class="music-caption">Fly With Wings On</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/gor.png');">
+      <audio controls src="music/My Apocalypse.mp3"></audio>
+      <div class="music-caption">My Apocalypse</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/sis.png');">
+      <audio controls src="music/Whispering Shadows.mp3"></audio>
+      <div class="music-caption"> Whispering Shadows</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/breaker.png');">
+      <audio controls src="music/Heartbreaker Spin.mp3"></audio>
+      <div class="music-caption">Heartbreaker Spin</div>
+    </div>
+    <!-- Add more music-box entries below as needed -->
+  </div>
+
+    <div class="music-grid">
+    <div class="music-box" style="background-image: url('music/snos.jpg');">
+      <audio controls src="music/Circuit of Snow.mp3"></audio>
+      <div class="music-caption">Circuit of Snow</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/king.png');">
+      <audio controls src="music/King is Alive.mp3"></audio>
+      <div class="music-caption">King is Alive.</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/jungle.png');">
+      <audio controls src="music/Battle in the Jungle.mp3"></audio>
+      <div class="music-caption">/Battle in the Jungle</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/rex.png');">
+      <audio controls src="music/Battle in the Jungle remix.mp3"></audio>
+      <div class="music-caption">remix</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/country.png');">
+      <audio controls src="music/Match Makers Race.mp3"></audio>
+      <div class="music-caption">Match Makers Race</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/king3.png');">
+      <audio controls src="music/cin.mp3"></audio>
+      <div class="music-caption">King is Alive Part 2</div>
+    </div>
+    <!-- Add more music-box entries below as needed -->
+  </div>
+
+    <div class="music-grid">
+    <div class="music-box" style="background-image: url('music/.jpg');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <!-- Add more music-box entries below as needed -->
+  </div>
+
+   <div class="music-grid">
+    <div class="music-box" style="background-image: url('music/.jpg');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <!-- Add more music-box entries below as needed -->
+  </div>
+
+   <div class="music-grid">
+    <div class="music-box" style="background-image: url('music/.jpg');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <!-- Add more music-box entries below as needed -->
+  </div>
+
+   <div class="music-grid">
+    <div class="music-box" style="background-image: url('music/.jpg');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <!-- Add more music-box entries below as needed -->
+  </div>
+
+   <div class="music-grid">
+    <div class="music-box" style="background-image: url('music/.jpg');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <div class="music-box" style="background-image: url('music/.png');">
+      <audio controls src="music/.mp3"></audio>
+      <div class="music-caption">-</div>
+    </div>
+    <!-- Add more music-box entries below as needed -->
+  </div>
+
+  <footer>
+    &copy; 2025 Everett Orange | Designed by Everett
+  </footer>
+
+ <script>
+  const hoverSound = document.getElementById('hover-sound');
+  let audioUnlocked = false;
+
+  window.addEventListener('click', () => {
+    if (!audioUnlocked) {
+      hoverSound.play().then(() => hoverSound.pause());
+      audioUnlocked = true;
+    }
+  });
+
+  document.querySelectorAll('.music-box').forEach(box => {
+    box.addEventListener('mouseenter', () => {
+      if (audioUnlocked) {
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+      }
+    });
+
+    // Toggle expand and hide audio on double click
+    box.addEventListener('dblclick', (e) => {
+      e.stopPropagation();
+      box.classList.toggle('fullscreen');
+    });
+  });
+</script>
+
+</body>
+</html>
