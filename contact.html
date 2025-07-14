@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – Everett Orange</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #d6f3ff, #ffffff);
+      color: #1C1A30;
+    }
+
+    header {
+      background-color: #e0f7ff;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 3px solid #00aaff;
+    }
+
+    .logo {
+      font-size: 48px;
+      font-weight: bold;
+      color: #00aaff;
+    }
+
+    .logo span {
+      color: #f75990;
+    }
+
+    nav a {
+      margin-left: 30px;
+      text-decoration: none;
+      color: #1C1A30;
+      font-weight: 500;
+      font-size: 20px;
+      padding: 10px 15px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #f75990;
+      text-shadow: 0 0 8px #f75990;
+    }
+
+   main {
+  max-width: 600px;
+  margin: 100px auto 40px auto;
+  padding: 30px;
+  text-align: center;
+  background: rgb(209, 222, 231);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
+}
+
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      color: #00aaff;
+    }
+
+    p {
+      font-size: 20px;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .email-highlight {
+      color: #f75990;
+      font-weight: bold;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    input, textarea {
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffffff;
+      color: #1C1A30;
+      outline: none;
+      box-shadow: 0 0 0 transparent;
+      transition: 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      box-shadow: 0 0 10px #00aaff;
+      border: 2px solid #00aaff;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #00aaff;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #0088cc;
+      box-shadow: 0 0 15px #00aaff;
+    }
+
+    .back-home {
+      display: inline-block;
+      margin-top: 40px;
+      font-size: 18px;
+      color: #00aaff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-home:hover {
+      color: #f75990;
+      text-shadow: 0 0 10px #f75990;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+      background-color: #f2fcff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hover Sound -->
+  <audio id="hover-sound" src="sounds/clicky.mp3" preload="auto"></audio>
+
+  <header>
+    <div class="logo">EVERETT <span>ORANGE</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contact Me</h1>
+    <p>
+      Have a project, question, or idea? I’d love to hear from you.<br>
+      Reach out anytime at 
+      <span class="email-highlight">orangeeverett@yahoo.com</span>.
+    </p>
+
+    <form action="https://formspree.io/f/xqabkvrr" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <a href="index.html" class="back-home">← Back to Home</a>
+  </main>
+
+  <footer>
+    &copy; 2025 Everett Orange | Designed by Everett
+  </footer>
+
+  <script>
+    const hoverSound = document.getElementById("hover-sound");
+    const hoverables = document.querySelectorAll("a, button");
+
+    hoverables.forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+      });
+    });
+  </script>
+</body>
+</html>
