@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery – Everett Orange</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #d6f3ff, #ffffff);
+      color: #1C1A30;
+    }
+
+    header {
+      background-color: #e0f7ff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #00aaff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 36px;
+      font-weight: bold;
+      color: #00aaff;
+    }
+
+    .logo span {
+      color: #f75990;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #1C1A30;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #f75990;
+      text-shadow: 0 0 5px #f75990;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #00aaff;
+      margin: 5px;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: #e0f7ff;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 10px;
+        border: 2px solid #00aaff;
+        border-radius: 10px;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #00aaff;
+      margin-bottom: 20px;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .video-card, .image-card {
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 170, 255, 0.2);
+      position: relative;
+      text-align: center;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .image-card img {
+      width: 100%;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .image-card img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #f2fcff;
+      margin-top: 60px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<audio id="hover-sound" src="sounds/click.mp3" preload="auto"></audio>
+
+<header>
+  <div class="logo">EVERETT <span>ORANGE</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2>Work & Home Projects - Videos Showcase</h2>
+    <div class="video-grid">
+      <div class="video-card">
+        <video controls>
+          <source src="personal/Accommodation Letter Request Form.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="caption">Demo Reel 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gallery-container">
+    <h2>Work & Home Projects Videos</h2>
+    <div class="video-grid">
+      <div class="video-card">
+        <video controls>
+          <source src="personal/ASSIST Mentoring Cohort.mp4" type="video/mp4">
+        </video>
+        <div class="caption">ASSIST Mentoring Cohort</div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src="personal/College 2 Careers.mp4" type="video/mp4">
+        </video>
+        <div class="caption">College 2 Careers</div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src="personal/Assistive Technology.mp4" type="video/mp4">
+        </video>
+        <div class="caption">Assistive Technology</div>
+      </div>
+    </div>
+  </div>
+
+   <div class="gallery-container">
+    <div class="video-grid">
+      <div class="video-card">
+        <video controls>
+          <source src="personal/Testing.mp4" type="video/mp4">
+        </video>
+        <div class="caption">Testing Process</div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src="personal/Accommodation Letter Request Form.mp4" type="video/mp4">
+        </video>
+        <div class="caption">Accommodation Letter Request Form</div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src=".mp4" type="video/mp4">
+        </video>
+        <div class="caption"></div>
+      </div>
+    </div>
+  </div>
+
+   <div class="gallery-container">
+    <div class="video-grid">
+      <div class="video-card">
+        <video controls>
+          <source src=".mp4" type="video/mp4">
+        </video>
+        <div class="caption"></div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src=".mp4" type="video/mp4">
+        </video>
+        <div class="caption"></div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src=".mp4" type="video/mp4">
+        </video>
+        <div class="caption"></div>
+      </div>
+    </div>
+  </div>
+
+   <div class="gallery-container">
+    <div class="video-grid">
+      <div class="video-card">
+        <video controls>
+          <source src=".mp4" type="video/mp4">
+        </video>
+        <div class="caption"></div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src=".mp4" type="video/mp4">
+        </video>
+        <div class="caption"></div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src=".mp4" type="video/mp4">
+        </video>
+        <div class="caption"></div>
+      </div>
+    </div>
+  </div>
+
+  <section style="margin-top: 60px;">
+    <h2>Work & Home Projects Photos</h2>
+    <div class="image-grid">
+      <div class="image-card">
+        <img src=".png" alt="Design 1" onclick="viewFull(this)">
+        <div class="caption">Poster Concept #1</div>
+      </div>
+      <div class="image-card">
+        <img src=".png" alt="Design 2" onclick="viewFull(this)">
+        <div class="caption">UI Mockup</div>
+      </div>
+      <div class="image-card">
+        <img src=".png" alt="Design 3" onclick="viewFull(this)">
+        <div class="caption">Social Ad Layout</div>
+      </div>
+      <div class="image-card">
+        <img src=".png" alt="Design 4" onclick="viewFull(this)">
+        <div class="caption">Brand Collateral</div>
+      </div>
+      <div class="image-card">
+        <img src=".png" alt="Design 5" onclick="viewFull(this)">
+        <div class="caption">Mobile App Interface</div>
+      </div>
+      <div class="image-card">
+        <img src=".png" alt="Design 6" onclick="viewFull(this)">
+        <div class="caption">Thumbnail Design</div>
+      </div>
+      <div class="image-card">
+        <img src=".png" alt="Design 7" onclick="viewFull(this)">
+        <div class="caption">Promo Art</div>
+      </div>
+      <div class="image-card">
+        <img src=".jpg" alt="Design 8" onclick="viewFull(this)">
+        <div class="caption">Event Banner</div>
+      </div>
+      <div class="image-card">
+        <img src=".jpg" alt="Design 9" onclick="viewFull(this)">
+        <div class="caption">Web Layout</div>
+      </div>
+           <div class="image-card">
+        <img src=".jpg" alt="Design 7" onclick="viewFull(this)">
+        <div class="caption">Promo Art</div>
+      </div>
+      <div class="image-card">
+        <img src=".jpg" alt="Design 8" onclick="viewFull(this)">
+        <div class="caption">Event Banner</div>
+      </div>
+      <div class="image-card">
+        <img src=".jpg" alt="Design 9" onclick="viewFull(this)">
+        <div class="caption">Web Layout</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Everett Orange | Designed by Everett
+</footer>
+
+<div id="fullscreenModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:9999;">
+  <img id="fullscreenImage" src="" style="max-width:90%; max-height:90%; border:6px solid #00aaff; border-radius:12px;">
+  <span onclick="closeFull()" style="position:absolute; top:20px; right:30px; font-size:40px; color:white; cursor:pointer;">&times;</span>
+</div>
+
+<script>
+  function toggleMenu() {
+    document.querySelector('nav').classList.toggle('active');
+  }
+
+  function viewFull(img) {
+    document.getElementById('fullscreenImage').src = img.src;
+    document.getElementById('fullscreenModal').style.display = 'flex';
+  }
+
+  function closeFull() {
+    document.getElementById('fullscreenModal').style.display = 'none';
+  }
+
+  const hoverSound = document.getElementById('hover-sound');
+  let audioUnlocked = false;
+  window.addEventListener('click', () => {
+    if (!audioUnlocked) {
+      hoverSound.play().then(() => hoverSound.pause());
+      audioUnlocked = true;
+    }
+  });
+
+  document.querySelectorAll('video, .image-card img').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      if (audioUnlocked) {
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
