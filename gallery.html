@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery – Everett Orange</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#b0e0ff, #68c2ff);
+      color: #1C1A30;
+      overflow-x: hidden;
+    }
+
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    header {
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 36px;
+      font-weight: bold;
+      color: #00aaff;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-bottom: 3px solid #00aaff;
+      position: relative;
+    }
+
+    .home-button {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0, 170, 255, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .home-button:hover {
+      background-color: #008fcc;
+      transform: scale(1.05);
+    }
+
+    .gallery-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 28px;
+      color: #00aaff;
+      margin-bottom: 30px;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .video-card {
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 170, 255, 0.3);
+      text-align: center;
+      position: relative;
+      transition: transform 0.2s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .video-card video {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #f2fcff;
+      color: #666;
+      margin-top: 60px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background MP4 -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="everett_wii_gallery_bg.mp4" type="video/mp4">
+  </video>
+
+  <header>
+    <button class="home-button" onclick="location.href='index.html'">🏠 Home</button>
+    EVERETT <span style="color:#f75990;">ORANGE</span> – Gallery
+  </header>
+
+  <div class="gallery-container">
+    <h2>🎥 My Portfolio Videos Showcase</h2>
+    <div class="video-grid">
+      <!-- Row 1 -->
+      <div class="video-card">
+        <video controls>
+          <source src="videos/.mp4" type="video/mp4">
+        </video>
+        <div class="caption">Demo Reel</div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src="videos/ui-showcase.mp4" type="video/mp4">
+        </video>
+        <div class="caption">UI Showcase</div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src="videos/logo-animation.mp4" type="video/mp4">
+        </video>
+        <div class="caption">Logo Animation</div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="video-card">
+        <video controls>
+          <source src="videos/ad-spot.mp4" type="video/mp4">
+        </video>
+        <div class="caption">Ad Spot Concept</div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src="videos/motion-title.mp4" type="video/mp4">
+        </video>
+        <div class="caption">Motion Title</div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src="videos/project-breakdown.mp4" type="video/mp4">
+        </video>
+        <div class="caption">Project Breakdown</div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="video-card">
+        <video controls>
+          <source src="videos/promo-clip.mp4" type="video/mp4">
+        </video>
+        <div class="caption">Promo Clip</div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src="videos/character-rig.mp4" type="video/mp4">
+        </video>
+        <div class="caption">Character Rigging</div>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src="videos/3d-scene.mp4" type="video/mp4">
+        </video>
+        <div class="caption">3D Scene Walkthrough</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Everett Orange | Designed with 💡 by Everett
+  </footer>
+
+</body>
+</html>
