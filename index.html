@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Everett's Portfolio - Wii Style</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+#backgroundVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: linear-gradient(to bottom, #d6f3ff, #ffffff);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      cursor: url('images/cursor-hand.png'), auto;
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 40px 20px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #00aaff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: 2px;
+      background: linear-gradient(to right, #e0f7ff, #ffffff);
+      border-bottom: 3px solid #00aaff;
+    }
+
+    @keyframes wiggle {
+      0% { transform: scale(1) rotate(0deg); }
+      25% { transform: scale(1.05) rotate(1deg); }
+      50% { transform: scale(1.1) rotate(-1deg); }
+      75% { transform: scale(1.05) rotate(1deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 200px);
+      gap: 40px 30px;
+      padding: 20px;
+      justify-content: center;
+    }
+
+    .channel {
+      width: 200px;
+      height: 130px;
+      background: linear-gradient(to bottom, #ffffff, #e6e6e6);
+      border-radius: 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      cursor: url('images/cursor-hand.png'), pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .channel:hover,
+    .channel:focus {
+      animation: wiggle 0.6s ease-in-out;
+      box-shadow: 0 0 20px rgba(0, 120, 215, 0.5);
+    }
+
+    .channel video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 25px;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .channel img,
+    .channel-label {
+      z-index: 1;
+    }
+
+    .channel img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    .channel-label {
+      position: absolute;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .channel:hover .channel-label {
+      opacity: 1;
+    }
+
+    .channel::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 25px;
+      z-index: 1;
+    }
+
+    .channel:hover::after {
+      opacity: 1;
+    }
+
+    .footer-bar {
+      position: relative;
+      width: 100%;
+      height: 100px;
+      background: white url('images/bg-wave.png') center top no-repeat;
+      background-size: cover;
+      border-top-left-radius: 60% 100%;
+      border-top-right-radius: 60% 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo img {
+      height: 100px;
+      border-radius: 50%;
+      padding: 5px;
+    }
+
+   .clock {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.4rem; /* slightly larger */
+  color: #1f6d94; /* match header color */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+
+    .mail-icon a img {
+      width: 170px;
+      height: 100px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .mail-icon a:hover img {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 0 20px rgba(0, 120, 215, 0.7);
+    }
+
+    @media (max-width: 1024px) {
+      .channel-grid {
+        grid-template-columns: repeat(2, 150px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .channel-grid {
+        grid-template-columns: repeat(1, 150px);
+      }
+    }
+
+#musicToggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-size: 24px;
+  background: #00aaff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+#musicToggle:hover {
+  background: #0088cc;
+}
+
+#backgroundVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.25; /* Adjust transparency here */
+  pointer-events: none;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <video autoplay muted loop id="backgroundVideo">
+  <source src="background/wld.mp4" type="video/mp4">
+</video>
+
+
+  <header>Everett Orange</header>
+  
+<!-- Background video -->
+<video autoplay muted loop id="backgroundVideo">
+  <source src="background/wld.mp4" type="video/mp4">
+</video>
+
+
+  <button id="musicToggle" title="Toggle Music">🎵</button>
+<audio id="bgMusic" src="sound/wii.mp3" loop preload="auto"></audio>
+
+
+
+<div class="channel-grid">
+  <a href="about.html" class="channel">
+    <video autoplay muted loop><source src="videos/everett.mp4" type="video/mp4"></video>
+    <div class="channel-label">About Me</div>
+  </a>
+  <a href="gallery.html" class="channel">
+    <video autoplay muted loop><source src="videos/gallery.mp4" type="video/mp4"></video>
+    <div class="channel-label">Gallery coming soon</div>
+  </a>
+  <a href="services.html" class="channel">
+    <video autoplay muted loop><source src="videos/service.mp4" type="video/mp4"></video>
+    <div class="channel-label">Services</div>
+  </a>
+  <a href="contact.html" class="channel">
+    <video autoplay muted loop><source src="videos/contact.mp4" type="video/mp4"></video>
+    <div class="channel-label">Contact</div>
+  </a>
+  <a href="animations.html" class="channel">
+    <video autoplay muted loop><source src="videos/animation.mp4" type="video/mp4"></video>
+    <div class="channel-label">2D and 3D Animations</div>
+  </a>
+  <a href="cinema4d.html" class="channel">
+    <video autoplay muted loop><source src="videos/c4d.mp4" type="video/mp4"></video>
+    <div class="channel-label">Cinema 4D</div>
+  </a>
+  <a href="unreal.html" class="channel">
+    <video autoplay muted loop><source src="videos/unreal.mp4" type="video/mp4"></video>
+    <div class="channel-label">Unreal Engine 5</div>
+  </a>
+  <a href="landscape.html" class="channel">
+    <video autoplay muted loop><source src="videos/landscape.mp4" type="video/mp4"></video>
+    <div class="channel-label">Landscape Design</div>
+  </a>
+  <a href="packaging.html" class="channel">
+    <video autoplay muted loop><source src="videos/package.mp4" type="video/mp4"></video>
+    <div class="channel-label">Packaging</div>
+  </a>
+  <a href="typography.html" class="channel">
+    <video autoplay muted loop><source src="videos/typography.mp4" type="video/mp4"></video>
+    <div class="channel-label">Typography</div>
+  </a>
+  <a href="commercials.html" class="channel">
+    <video autoplay muted loop><source src="videos/commercial.mp4" type="video/mp4"></video>
+    <div class="channel-label">Commercial Production</div>
+  </a>
+  <a href="product.html" class="channel">
+    <video autoplay muted loop><source src="videos/Old School New Rules.mp4" type="video/mp4"></video>
+    <div class="channel-label">Product Design</div>
+  </a>
+  <a href="ads.html" class="channel">
+    <video autoplay muted loop><source src="videos/ad.mp4" type="video/mp4"></video>
+    <div class="channel-label">Ad Campaign</div>
+  </a>
+  <a href="music.html" class="channel">
+    <video autoplay muted loop><source src="videos/music.mp4" type="video/mp4"></video>
+    <div class="channel-label">Music Development</div>
+  </a>
+  <a href="personal.html" class="channel">
+    <video autoplay muted loop><source src="videos/home and work project.mp4" type="video/mp4"></video>
+    <div class="channel-label">Work & Home Projects</div>
+  </a>
+  <a href="mocap.html" class="channel">
+    <video autoplay muted loop><source src="videos/rokoko motion mocap.mp4" type="video/mp4"></video>
+    <div class="channel-label">MotionCapture Coming Soon</div>
+  </a>
+</div>
+
+
+  <div class="footer-bar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Wii Logo">
+    </div>
+    <div class="clock" id="clock"></div>
+
+
+ <div class="mail-icon">
+  <a href="documents/resume92.pdf" download title="Download My Resume">
+    <img src="images/resume.png" alt="Download Resume">
+  </a>
+</div>
+
+
+  <!-- Audio for hover sound -->
+  <audio id="hoverSound" src="sound/bing.mp3" preload="auto"></audio>
+  <audio id="mailHoverSound" src="sound/snocht.mp3" preload="auto"></audio>
+
+
+
+  <script>
+  function updateClock() {
+    const clock = document.getElementById('clock');
+    const now = new Date();
+    const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const date = now.toLocaleDateString(undefined, { weekday: 'short', month: 'numeric', day: 'numeric' });
+    clock.textContent = `${time} ${date}`;
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // Play hover sound
+  const hoverSound = document.getElementById('hoverSound');
+  document.querySelectorAll('.channel').forEach(channel => {
+    channel.addEventListener('mouseenter', () => {
+      if (hoverSound) {
+        hoverSound.currentTime = 0;
+        hoverSound.play().catch(() => {});
+      }
+    });
+  });
+
+  // Music toggle
+  const musicToggle = document.getElementById('musicToggle');
+  const bgMusic = document.getElementById('bgMusic');
+  let musicPlaying = false;
+
+  // Start music on first user interaction
+  window.addEventListener('click', () => {
+    if (!musicPlaying) {
+      bgMusic.play().then(() => {
+        musicToggle.textContent = '🔇';
+        musicPlaying = true;
+      }).catch(() => {});
+    }
+  }, { once: true });
+
+  // Manual toggle button
+  musicToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent triggering autoplay again
+    if (musicPlaying) {
+      bgMusic.pause();
+      musicToggle.textContent = '🎵';
+    } else {
+      bgMusic.play().catch(() => {});
+      musicToggle.textContent = '🔇';
+    }
+    musicPlaying = !musicPlaying;
+  });
+
+  // Mail icon hover sound
+const mailHoverSound = document.getElementById('mailHoverSound');
+const mailIcon = document.querySelector('.mail-icon a img');
+
+mailIcon.addEventListener('mouseenter', () => {
+  if (mailHoverSound) {
+    mailHoverSound.currentTime = 0;
+    mailHoverSound.play().catch(() => {});
+  }
+});
+
+</script>
+
+<style>
+@keyframes floatDown {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.app-icon {
+  position: fixed;
+  width: 450px;
+  height: 250px;
+  z-index: 1;
+  pointer-events: none;
+  animation: floatDown 50s;
+  opacity: 0;
+}
+
+.app-icon.left {
+  left: 10px;
+}
+
+.app-icon.right {
+  right: 10px;
+}
+
+
+</style>
+
+<!-- Floating App Icons -->
+<!-- Left Side -->
+<img src="images/apps/a.png" class="app-icon left" style="top: -5%; animation-delay: 0s;">
+<img src="images/apps/b.png" class="app-icon left" style="top: -10%; animation-delay: 2s;">
+<img src="images/apps/c.png" class="app-icon left" style="top: -15%; animation-delay: 4s;">
+<img src="images/apps/d.png" class="app-icon left" style="top: -20%; animation-delay: 6s;">
+<img src="images/apps/f.png" class="app-icon left" style="top: -25%; animation-delay: 8s;">
+<img src="images/apps/g.png" class="app-icon left" style="top: -30%; animation-delay: 10s;">
+<img src="images/apps/h.png" class="app-icon left" style="top: -35%; animation-delay: 12s;">
+<img src="images/apps/j.png" class="app-icon left" style="top: -40%; animation-delay: 14s;">
+
+<!-- Right Side -->
+<img src="images/apps/k.png" class="app-icon right" style="top: -5%; animation-delay: 1s;">
+<img src="images/apps/l.png" class="app-icon right" style="top: -10%; animation-delay: 3s;">
+<img src="images/apps/n.png" class="app-icon right" style="top: -15%; animation-delay: 5s;">
+<img src="images/apps/s.png" class="app-icon right" style="top: -20%; animation-delay: 7s;">
+<img src="images/apps/v.png" class="app-icon right" style="top: -25%; animation-delay: 9s;">
+<img src="images/apps/x.png" class="app-icon right" style="top: -30%; animation-delay: 11s;">
+<img src="images/apps/z.png" class="app-icon right" style="top: -35%; animation-delay: 13s;">
+<img src="images/apps/u.png" class="app-icon right" style="top: -40%; animation-delay: 15s;">
+
+<canvas id="gameCanvas"></canvas>
+
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.style.position = "fixed";
+canvas.style.top = "0";
+canvas.style.left = "0";
+canvas.style.zIndex = "10";
+canvas.style.pointerEvents = "none";
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let ball = {
+  x: canvas.width / 2,
+  y: canvas.height / 2,
+  size: 25,
+  color: '#ff0080',
+  vx: 0,
+  vy: 0
+};
+
+let mouse = {
+  x: canvas.width / 2,
+  y: canvas.height / 2
+};
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+window.addEventListener("mousemove", (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+function update() {
+  let dx = mouse.x - ball.x;
+  let dy = mouse.y - ball.y;
+
+  // ↓ Slower follow effect
+  ball.vx += dx * 0.015;
+  ball.vy += dy * 0.015;
+
+  ball.vx *= 0.85;
+  ball.vy *= 0.85;
+
+  ball.x += ball.vx;
+  ball.y += ball.vy;
+
+  // ↓ Smoother, slower color shift
+  let speed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+  let hue = (speed * 25) % 360;
+  ball.color = `hsl(${hue}, 100%, 50%)`;
+}
+
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  ctx.globalAlpha = 0.4; // ← Lower opacity (0.0 to 1.0)
+  ctx.arc(ball.x, ball.y, ball.size, 0, Math.PI * 2);
+  ctx.fillStyle = ball.color;
+  ctx.shadowBlur = 15;
+  ctx.shadowColor = ball.color;
+  ctx.fill();
+  ctx.globalAlpha = 1.0; // Reset opacity after drawing
+}
+
+
+function loop() {
+  update();
+  draw();
+  requestAnimationFrame(loop);
+}
+
+loop();
+</script>
+
+
+</body>
+</html>
